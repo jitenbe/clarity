@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.hex.clarity.core.model.Employee;
+import com.hex.clarity.core.entity.Employee;
 import com.hex.clarity.core.repository.EmpRepository;
 import com.hex.clarity.core.service.RegistrationService;
 

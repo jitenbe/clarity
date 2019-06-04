@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hex.clarity.core.model.Employee;
+import com.hex.clarity.core.entity.Employee;
 import com.hex.clarity.core.service.RegistrationService;
 
 @RestController

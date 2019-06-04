@@ -9,5 +9,7 @@ export class Investment{
     client_requirement_name?:string;
     is_deliverbales_in_current_week?:string;
     consultant_id?:string;
+    firstname?:string;
+    lastname?:string;
    
 }

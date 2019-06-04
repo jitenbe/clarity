@@ -1,20 +1,89 @@
+
 <div class="card">
     <div class="card-header">
       Add Investment Details
     </div>
     <div class="card-body">
-<div class="container">
+<div class="container">      
     <div class="row">
         <div class="col-md-12 offset-md-2">
             <!-- <div class="col-md-4 col-sm-6"><h3>Login</h3></div> -->
-            <form name="form" (ngSubmit)="f.form.valid && onSubmit(investmentForm)" #f="ngForm" novalidate>
+            <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
               <div class="row" *ngIf="showMsg">
                 <div class="col-xs-12">
                   <p class="alter alert-success">
                     <strong>Investment details added successfully!!</strong></p>
                 </div>
               </div>
-                <div class="form-group col-md-4 col-sm-6">
+              <fieldset class="col-md-10">    	
+                  <legend>Consultant</legend>
+              <div class="form-group col-md-4 col-sm-6">
+                  <label for="consultant_id">Lan Id</label>
+                  <input type="text" class="form-control" name="consultant_id" [(ngModel)]="investment.consultant_id" 
+                  #consultant_id="ngModel" [ngClass]="{ 'is-invalid': f.submitted && consultant_id.invalid }" 
+                  required />
+                  <div *ngIf="f.submitted && consultant_id.invalid" class="invalid-feedback">
+                      <div *ngIf="consultant_id.errors.required">Lan Id is required</div>
+                  </div>
+              </div>
+              
+              <div class="form-group col-md-4 col-sm-6">
+                  <label for="firstname">First Name</label>
+                  <input type="text" class="form-control" name="firstname" [(ngModel)]="investment.firstname" 
+                  #firstname="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstname.invalid }" required />
+                  <div *ngIf="f.submitted && firstname.invalid" class="invalid-feedback">
+                      <div *ngIf="firstname.errors.required">First Name is required</div>
+                  </div>
+              </div>
+              <div class="form-group col-md-4 col-sm-6">
+                  <label for="lastname">Last Name</label>
+                  <input type="text" class="form-control" name="lastname" [(ngModel)]="investment.lastname" 
+                  #lastname="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastname.invalid }" required />
+                  <div *ngIf="f.submitted && lastname.invalid" class="invalid-feedback">
+                      <div *ngIf="lastname.errors.required">Last Name is required</div>
+                  </div>
+              </div>
+              <div class="form-group col-md-4 col-sm-6">
+                  <label for="location">Location</label>
+                  <input type="text" class="form-control" name="location" [(ngModel)]="investment.location" 
+                  #location="ngModel" [ngClass]="{ 'is-invalid': f.submitted && location.invalid }" required />
+                  <div *ngIf="f.submitted && location.invalid" class="invalid-feedback">
+                      <div *ngIf="location.errors.required">Location is required</div>
+                  </div>
+                  
+              </div>
+              </fieldset>
+              <fieldset class="col-md-10">    	
+                  <legend>SOW</legend>	
+                <div class="form-group col-md-6 col-sm-6">
+                    <label for="sow_no">SOW Number</label>
+                    <input type="text" class="form-control" name="sow_no" [(ngModel)]="investment.sow_no" 
+                    #sow_no="ngModel" [ngClass]="{ 'is-invalid': f.submitted && sow_no.invalid }" required />
+                    <div *ngIf="f.submitted && sow_no.invalid" class="invalid-feedback">
+                        <div *ngIf="sow_no.errors.required">SOW Number is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6 col-sm-6">
+                    <label for="sow_name">SOW Name</label>
+                    <input type="text" class="form-control" name="sow_name" [(ngModel)]="investment.sow_name" 
+                    #sow_name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && sow_name.invalid }" required />
+                    <div *ngIf="f.submitted && sow_name.invalid" class="invalid-feedback">
+                        <div *ngIf="sow_name.errors.required">SOW Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6 col-sm-6">
+                    <label for="sow_deliverables">SOW Deliverables</label>
+                    <input type="text" class="form-control" name="sow_deliverables" [(ngModel)]="investment.sow_deliverables" 
+                    #sow_deliverables="ngModel" [ngClass]="{ 'is-invalid': f.submitted && sow_deliverables.invalid }" required />
+                    <div *ngIf="f.submitted && sow_deliverables.invalid" class="invalid-feedback">
+                        <div *ngIf="sow_deliverables.errors.required">SOW Deliverables is required</div>
+                    </div>
+                </div>
+                </fieldset>
+                
+              <fieldset class="col-md-10">    	
+                  <legend>Investment</legend>	
+                <div class="form-group col-md-6 col-sm-8">
                     <label for="investment_code">Investment Code</label>
                     <input type="text" class="form-control" name="investment_code" [(ngModel)]="investment.investment_code" 
                     #investment_code="ngModel" [ngClass]="{ 'is-invalid': f.submitted && investment_code.invalid }" 
@@ -23,7 +92,7 @@
                         <div *ngIf="investment_code.errors.required">Investment Code is required</div>
                     </div>
                 </div>
-                <div class="form-group col-md-4 col-sm-6">
+                <div class="form-group col-md-6 col-sm-6">
                     <label for="investment_name">Investment Name</label>
                     <input type="text" class="form-control" name="investment_name" [(ngModel)]="investment.investment_name" 
                     #investment_name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && investment_name.invalid }" required />
@@ -31,7 +100,7 @@
                         <div *ngIf="investment_name.errors.required">Investment Name is required</div>
                     </div>
                 </div>
-                <div class="form-group col-md-4 col-sm-6">
+                <div class="form-group col-md-6 col-sm-6">
                     <label for="investment_type">Investment Type</label>
                     <input type="text" class="form-control" name="investment_type" [(ngModel)]="investment.investment_type" 
                     #investment_type="ngModel" [ngClass]="{ 'is-invalid': f.submitted && investment_type.invalid }" required />
@@ -39,40 +108,16 @@
                         <div *ngIf="investment_type.errors.required">Investment Type is required</div>
                     </div>
                 </div>
-                <div class="form-group col-md-4 col-sm-6">
-                    <label for="sow_no">SOW Number</label>
-                    <input type="text" class="form-control" name="sow_no" [(ngModel)]="investment.sow_no" 
-                    #sow_no="ngModel" [ngClass]="{ 'is-invalid': f.submitted && sow_no.invalid }" required />
-                    <div *ngIf="f.submitted && sow_no.invalid" class="invalid-feedback">
-                        <div *ngIf="sow_no.errors.required">SOW Number is required</div>
-                    </div>
-                </div>
-                <div class="form-group col-md-4 col-sm-6">
-                    <label for="sow_name">SOW Name</label>
-                    <input type="text" class="form-control" name="sow_name" [(ngModel)]="investment.sow_name" 
-                    #sow_name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && sow_name.invalid }" required />
-                    <div *ngIf="f.submitted && sow_name.invalid" class="invalid-feedback">
-                        <div *ngIf="sow_name.errors.required">SOW Name is required</div>
-                    </div>
-                </div>
-                <div class="form-group col-md-4 col-sm-6">
-                    <label for="sow_deliverables">SOW Deliverables</label>
-                    <input type="text" class="form-control" name="sow_deliverables" [(ngModel)]="investment.sow_deliverables" 
-                    #sow_deliverables="ngModel" [ngClass]="{ 'is-invalid': f.submitted && sow_deliverables.invalid }" required />
-                    <div *ngIf="f.submitted && sow_deliverables.invalid" class="invalid-feedback">
-                        <div *ngIf="sow_deliverables.errors.required">SOW Deliverables is required</div>
-                    </div>
-                </div>
-                <div class="form-group col-md-4 col-sm-6">
+                <!-- <div class="form-group col-md-4 col-sm-6">
                     <label for="location">Location</label>
                     <input type="text" class="form-control" name="location" [(ngModel)]="investment.location" 
                     #location="ngModel" [ngClass]="{ 'is-invalid': f.submitted && location.invalid }" required />
                     <div *ngIf="f.submitted && location.invalid" class="invalid-feedback">
                         <div *ngIf="location.errors.required">Location is required</div>
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group col-md-4 col-sm-6">
-                    <label for="client_requirement_name">Client Requirement Name</label>
+                    <label for="client_requirement_name">Task Name</label>
                     <textarea rows="5" cols="33" class="form-control" name="client_requirement_name" 
                     [(ngModel)]="investment.client_requirement_name" 
                     #client_requirement_name="ngModel" 
@@ -95,6 +140,7 @@
                         <div *ngIf="is_deliverbales_in_current_week.errors.required">Is Deliverbales In Current Week is required</div>
                     </div>
                 </div>
+              </fieldset>
                 <div class="form-group col-md-4 col-sm-6">
                     <button class="btn btn-primary">Add</button>
                 </div>

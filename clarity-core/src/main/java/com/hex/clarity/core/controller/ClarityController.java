@@ -11,6 +11,7 @@ public class ClarityController {
 	  public String hi() {
 	    return "Hexaware";
 	  }
+	
 
 
 }

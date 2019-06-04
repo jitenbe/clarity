@@ -1,4 +1,4 @@
-package com.hex.clarity.core.model;
+package com.hex.clarity.core.entity;
 
 import java.io.Serializable;
 
@@ -28,6 +28,8 @@ public class InvestmentMaster implements Serializable {
 	private String client_requirement_name;
 	private String is_deliverbales_in_current_week;
 	private String consultant_id;
+	private String firstname;
+	private String lastname;
 
 	public Long getId() {
 		return id;

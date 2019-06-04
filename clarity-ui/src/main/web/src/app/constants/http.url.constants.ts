@@ -1,0 +1,8 @@
+export class HttpUrlConstants
+{
+    public static URL_RESOLVERS={
+        CREATE_EMPLOYEE:'employee/create',
+        LOGIN:'employee/login',
+        CREATE_INVESTMENT:'investment/create'
+    };
+}

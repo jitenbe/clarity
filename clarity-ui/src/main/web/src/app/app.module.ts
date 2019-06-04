@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ClarityComponent } from './components/clarity/clarity.component';
 import { ValidateComponent } from './components/validate/validate.component';
 import { InvestmentComponent } from './components/investment/investment.component';
+import { ApiUrlResolverService } from './services/api.url.resolver.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { InvestmentComponent } from './components/investment/investment.componen
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [LoginService],
+  providers: [LoginService,ApiUrlResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

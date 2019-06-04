@@ -1,4 +1,4 @@
-package com.hex.clarity.core.model;
+package com.hex.clarity.core.entity;
 
 import java.io.Serializable;
 
