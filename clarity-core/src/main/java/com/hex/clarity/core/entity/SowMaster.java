@@ -12,8 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
-@Table(name="sow")
-public class Sow implements Serializable {
+@Table(name="sow_master")
+public class SowMaster implements Serializable {
 
 	/**
 	 * 
@@ -25,7 +25,7 @@ public class Sow implements Serializable {
 	private Long id;
 	private Long sow_no;
 	private String sow_name;
-
+	private String sow_deliverables;
 	public Long getId() {
 		return id;
 	}
@@ -49,20 +49,16 @@ public class Sow implements Serializable {
 	public void setSow_name(String sow_name) {
 		this.sow_name = sow_name;
 	}
-
-	/*
-	 * @OneToMany
-	 * 
-	 * @JoinColumn(name = "sow_no") private Set<Investment> investments;
-	 */
-
-	/*
-	 * public Set<Investment> getInvestments() { return investments; } public void
-	 * setInvestments(Set<Investment> investments) { this.investments = investments;
-	 * }
-	 */
 	@Override
 	public String toString() {
-		return "Sow [id=" + id + ", sow_no=" + sow_no + ", sow_name=" + sow_name + ", investments=" +  "]";
+		return "Sow [id=" + id + ", sow_no=" + sow_no + ", sow_name=" + sow_name + "]";
+	}
+
+	public String getSow_deliverables() {
+		return sow_deliverables;
+	}
+
+	public void setSow_deliverables(String sow_deliverables) {
+		this.sow_deliverables = sow_deliverables;
 	}
 }

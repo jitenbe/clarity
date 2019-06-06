@@ -1,7 +1,28 @@
 
+
+<!-- <ng-container *ngIf="show">
+    <div style="margin: 0 auto;text-align: left;">
+        <div>
+            <label>Name:</label>
+            <div><input id="tbname" name="yourname" /></div>
+        </div>
+        <div>
+            <label>Email Address:</label>
+            <div><input name="email" id="email" /></div></div>
+        <div>
+            <label>Additional Information (optional):</label>
+            <div><textarea rows="5" cols="46"></textarea></div>
+        </div>
+    </div>
+</ng-container> -->
+<button (click)="toggle()" id="bt" class="btn btn-primary">
+    {{investmentbtn}}
+</button>
+
+<ng-container *ngIf="show">
 <div class="card">
     <div class="card-header">
-      Add Investment Details
+      Investment Details
     </div>
     <div class="card-body">
 <div class="container">      
@@ -12,10 +33,10 @@
               <div class="row" *ngIf="showMsg">
                 <div class="col-xs-12">
                   <p class="alter alert-success">
-                    <strong>Investment details added successfully!!</strong></p>
+                    <strong>Investment added Successfully</strong></p>
                 </div>
               </div>
-              <fieldset class="col-md-10">    	
+              <!-- <fieldset class="col-md-10">    	
                   <legend>Consultant</legend>
               <div class="form-group col-md-4 col-sm-6">
                   <label for="consultant_id">Lan Id</label>
@@ -52,7 +73,7 @@
                   </div>
                   
               </div>
-              </fieldset>
+              </fieldset> 
               <fieldset class="col-md-10">    	
                   <legend>SOW</legend>	
                 <div class="form-group col-md-6 col-sm-6">
@@ -79,8 +100,8 @@
                         <div *ngIf="sow_deliverables.errors.required">SOW Deliverables is required</div>
                     </div>
                 </div>
-                </fieldset>
-                
+                </fieldset>-->
+              
               <fieldset class="col-md-10">    	
                   <legend>Investment</legend>	
                 <div class="form-group col-md-6 col-sm-8">
@@ -102,11 +123,15 @@
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
                     <label for="investment_type">Investment Type</label>
-                    <input type="text" class="form-control" name="investment_type" [(ngModel)]="investment.investment_type" 
-                    #investment_type="ngModel" [ngClass]="{ 'is-invalid': f.submitted && investment_type.invalid }" required />
+                    <select class="form-control" name="investment_type" [(ngModel)]="investment.investment_type" 
+                    #investment_type="ngModel" [ngClass]="{ 'is-invalid': f.submitted && investment_type.invalid }" required>
+                    <option *ngIf=!investment.investment_type value="" >Select</option>
+                    <option *ngFor="let investment_type of investmentTypeList" [ngValue]="investment_type">{{investment_type}}</option>
+                  </select>
                     <div *ngIf="f.submitted && investment_type.invalid" class="invalid-feedback">
                         <div *ngIf="investment_type.errors.required">Investment Type is required</div>
                     </div>
+                    
                 </div>
                 <!-- <div class="form-group col-md-4 col-sm-6">
                     <label for="location">Location</label>
@@ -132,7 +157,7 @@
                      [(ngModel)]="investment.is_deliverbales_in_current_week" 
                     #is_deliverbales_in_current_week="ngModel" 
                     [ngClass]="{ 'is-invalid': f.submitted && is_deliverbales_in_current_week.invalid }" required>
-                    
+                    <option value="">Select</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                   </select>
@@ -143,6 +168,7 @@
               </fieldset>
                 <div class="form-group col-md-4 col-sm-6">
                     <button class="btn btn-primary">Add</button>
+                    <button >Cancel</button>
                 </div>
             </form>
         </div>
@@ -150,4 +176,5 @@
 </div>
 </div>
 </div>
+</ng-container>
 

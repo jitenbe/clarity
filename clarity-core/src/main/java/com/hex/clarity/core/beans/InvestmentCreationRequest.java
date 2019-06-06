@@ -24,7 +24,7 @@ public class InvestmentCreationRequest implements Serializable {
 	private String location;
 	private String client_requirement_name;
 	private String is_deliverbales_in_current_week;
-	private String consultant_id;
+	private String consultant_code;
 	private String firstname;
 	private String lastname;
 	public Long getInvestment_code() {
@@ -87,11 +87,11 @@ public class InvestmentCreationRequest implements Serializable {
 	public void setIs_deliverbales_in_current_week(String is_deliverbales_in_current_week) {
 		this.is_deliverbales_in_current_week = is_deliverbales_in_current_week;
 	}
-	public String getConsultant_id() {
-		return consultant_id;
+	public String getConsultant_code() {
+		return consultant_code;
 	}
-	public void setConsultant_id(String consultant_id) {
-		this.consultant_id = consultant_id;
+	public void setConsultant_id(String consultant_code) {
+		this.consultant_code = consultant_code;
 	}
 	public String getFirstname() {
 		return firstname;
@@ -120,7 +120,7 @@ public class InvestmentCreationRequest implements Serializable {
 		this.location = location;
 		this.client_requirement_name = client_requirement_name;
 		this.is_deliverbales_in_current_week = is_deliverbales_in_current_week;
-		this.consultant_id = consultant_id;
+		this.consultant_code = consultant_id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 	}
@@ -131,7 +131,7 @@ public class InvestmentCreationRequest implements Serializable {
 				+ ", sow_deliverables=" + sow_deliverables + ", consultant_location=" + consultant_location
 				+ ", location=" + location + ", client_requirement_name=" + client_requirement_name
 				+ ", is_deliverbales_in_current_week=" + is_deliverbales_in_current_week + ", consultant_id="
-				+ consultant_id + ", firstname=" + firstname + ", lastname=" + lastname + "]";
+				+ consultant_code + ", firstname=" + firstname + ", lastname=" + lastname + "]";
 	}
 	
 
