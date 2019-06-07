@@ -1,7 +1,10 @@
 package com.hex.clarity.core.entity;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +13,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Investment_Master")
-public class InvestmentMaster implements Serializable {
+@AttributeOverride(name="createDate", column = @Column(name="investment_entry_date"))
+public class InvestmentMaster extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -23,11 +27,17 @@ public class InvestmentMaster implements Serializable {
 	private String client_requirement_name;
 	private String is_deliverbales_in_current_week;
 
+	
+	public Long getId() {
+		return id;
+	}
+
 	public InvestmentMaster() {
 		super();
 	}
-	public Long getId() {
-		return id;
+
+	public InvestmentMaster(Long id, Calendar createDate) {
+		super(id, createDate);
 	}
 
 	public void setId(Long id) {

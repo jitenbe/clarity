@@ -4,6 +4,7 @@ export class HttpUrlConstants
         CREATE_EMPLOYEE:'employee/create',
         LOGIN:'employee/login',
         CREATE_INVESTMENT:'investment/add',
-        INVESTMENT_TYPE_LIST:'investmenttype/list'
+        INVESTMENT_TYPE_LIST:'investmenttype/list',
+        INVESTMENT_LIST:'investment/list'
     };
 }

@@ -91,5 +91,18 @@ public class InvestmentController {
 		}
 		return new ResponseEntity<List<String>>(investment_type_list, HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/investment/list")
+	public @ResponseBody ResponseEntity<List<InvestmentMaster>> getInvestmentList()
+	{
+		List<InvestmentMaster> investment_list=null;
+		
+		investment_list=investmentService.getInvestmentList();
+		if(investment_list==null || investment_list.size()==0)
+		{
+			throw new ClarityException(ErrorMessage.NO_DATA);
+		}
+		return new ResponseEntity<List<InvestmentMaster>>(investment_list, HttpStatus.OK);
+	}
 
 }

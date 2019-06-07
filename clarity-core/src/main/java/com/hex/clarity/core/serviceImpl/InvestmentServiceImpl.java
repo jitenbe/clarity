@@ -1,6 +1,7 @@
 package com.hex.clarity.core.serviceImpl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -81,7 +82,9 @@ public class InvestmentServiceImpl implements InvestmentService {
 		try {
 
 			if (investment != null) {
-				InvestmentMaster investmaster = investmentRepository.save(investment);
+				InvestmentMaster investmaster =  null;
+				investment.setCreateDate(Calendar.getInstance());
+				investmaster = investmentRepository.save(investment);
 				if (null != investmaster) {
 					response = ClarityConstants.SUCCESS;
 				}
@@ -109,6 +112,19 @@ public class InvestmentServiceImpl implements InvestmentService {
 		}
 
 		return investmentTypeLists;
+	}
+
+	@Override
+	public List<InvestmentMaster> getInvestmentList() {
+		Iterable<InvestmentMaster> investmentList = null;
+		List<InvestmentMaster>investmentListValues=new ArrayList<>();
+		investmentList = investmentRepository.findAll();
+		if (investmentList !=null) {
+			investmentList.forEach(investmentListValues::add);
+			return investmentListValues;
+		}
+
+		return investmentListValues;
 	}
 
 }

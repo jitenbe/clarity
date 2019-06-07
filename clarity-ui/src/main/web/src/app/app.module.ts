@@ -14,6 +14,8 @@ import { ValidateComponent } from './components/validate/validate.component';
 import { InvestmentComponent } from './components/investment/investment.component';
 import { ApiUrlResolverService } from './services/api.url.resolver.service';
 
+import { PasswordComponent } from './components/password/password.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,8 @@ import { ApiUrlResolverService } from './services/api.url.resolver.service';
     LoginComponent,
     ClarityComponent,
     ValidateComponent,
-    InvestmentComponent    
+    InvestmentComponent,
+    PasswordComponent    
   ],
   imports: [
     BrowserModule,

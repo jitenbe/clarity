@@ -13,4 +13,5 @@ public interface InvestmentService {
 	Investment getInvestmentModel(InvestmentCreationRequest investments);
 	String addInvestmentDetails(InvestmentMaster investment);
 	List<String> getInvestmentTypeList();
+	List<InvestmentMaster> getInvestmentList();
 }

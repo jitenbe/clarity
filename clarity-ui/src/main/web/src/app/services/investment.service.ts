@@ -25,4 +25,9 @@ export class InvestmentService {
     let url=this.urlResolver.getUrl(HttpUrlConstants.URL_RESOLVERS.INVESTMENT_TYPE_LIST);
     return this.http.get(url);
   }
+  getInvestmentList():Observable<any>
+  {
+    let url=this.urlResolver.getUrl(HttpUrlConstants.URL_RESOLVERS.INVESTMENT_LIST);
+    return this.http.get<Investment[]>(url);
+  }
 }
