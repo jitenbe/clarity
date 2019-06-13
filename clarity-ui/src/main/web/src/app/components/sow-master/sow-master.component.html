@@ -1,0 +1,73 @@
+<ng-container>
+  <div class="card">
+    <div class="card-header">
+      Add SOW
+    </div>
+    <div class="card-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 offset-md-2">
+            <!-- <div class="col-md-4 col-sm-6"><h3>Login</h3></div> -->
+            <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+              <div class="row" *ngIf="showMsg">
+                <div class="col-xs-12">
+                  <p class="alter alert-success">
+                    <strong>Sow added Successfully</strong>
+                  </p>
+                </div>
+              </div>
+              <!-- <input type="hidden" [(ngModel)]="investment.id" #investment_code="ngModel" name="id" /> -->
+              <div class="form-group col-md-6 col-sm-8">
+                <label for="sowNo">Sow No</label>
+                <input type="text" class="form-control" name="sowNo" [(ngModel)]="sow.sowNo" #sowNo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && sowNo.invalid }"
+                  required />
+                <div *ngIf="f.submitted && sowNo.invalid" class="invalid-feedback">
+                  <div *ngIf="sowNo.errors.required">Sow Number is required</div>
+                </div>
+              </div>
+              <div class="form-group col-md-6 col-sm-8">
+                <label for="sowName">Sow Name</label>
+                <input type="text" class="form-control" name="sowName" [(ngModel)]="sow.sowName" #sowName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && sowName.invalid }"
+                  required />
+                <div *ngIf="f.submitted && sowName.invalid" class="invalid-feedback">
+                  <div *ngIf="sowName.errors.required">Sow Name is required</div>
+                </div>
+              </div>
+              <div class="form-group col-md-6 col-sm-8">
+                <label for="financeId">Finance ID</label>
+                <input type="text" class="form-control" name="financeId" [(ngModel)]="sow.financeId" #financeId="ngModel" [ngClass]="{ 'is-invalid': f.submitted && financeId.invalid }"
+                  required />
+                <div *ngIf="f.submitted && financeId.invalid" class="invalid-feedback">
+                  <div *ngIf="financeId.errors.required">Finance ID is required</div>
+                </div>
+              </div>
+              <div class="form-group col-md-6 col-sm-8">
+                <label for="procureIT">Procure IT</label>
+                <input type="text" class="form-control" name="procureIT" [(ngModel)]="sow.procureIT" #procureIT="ngModel" [ngClass]="{ 'is-invalid': f.submitted && procureIT.invalid }"
+                  required />
+                <div *ngIf="f.submitted && procureIT.invalid" class="invalid-feedback">
+                  <div *ngIf="financeId.errors.required">Procure IT is required</div>
+                </div>
+              </div>
+              <div class="form-group col-md-6 col-sm-8">
+                <label for="projectMasterId">Project Name</label>
+                <select id="projectMasterId" class="form-control" name="projectMasterId" [(ngModel)]="sow.projectMasterId" #projectMasterId="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && projectMasterId.invalid }" required>
+                  <option *ngIf=!sow.projectMasterId value=0>Select</option>
+                  <option *ngFor="let project of projectList" [ngValue]="project.projectMasterId">{{project.projectName}}</option>
+                </select>
+                <div *ngIf="f.submitted && projectMasterId.invalid" class="invalid-feedback">
+                  <div *ngIf="projectMasterId.errors.required">Procure IT is required</div>
+                </div>
+              </div>
+              <div class="form-group col-md-4 col-sm-6">
+                <button class="btn btn-primary" style='margin-right:16px'>Save</button>
+                <input type="button" value="Reset" class="btn btn-secondary" style='margin-right:16px' (click)="reset()" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

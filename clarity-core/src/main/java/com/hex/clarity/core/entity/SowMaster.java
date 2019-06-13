@@ -12,60 +12,32 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "sow_master")
 public class SowMaster implements Serializable {
+	public SowMaster() {
+		super();
+	}
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	@Column(name = "sow_id")
-	private Long sowId;
-	@Column(name = "procure_id")
-	private Long procureId;
-	@Column(name = "finance_id")
-	private Long finaceId;
+	@Column(name = "sow_master_id")
+	private Long sowMasterId;
+	@Column(name = "sow_no")
+	private Long sowNo;
 	@Column(name = "sow_name")
 	private String sowName;
-
-	public SowMaster() {
-		super();
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getSowId() {
-		return sowId;
-	}
-
-	public void setSowId(Long sowId) {
-		this.sowId = sowId;
-	}
-
-	public Long getProcureId() {
-		return procureId;
-	}
-
-	public void setProcureId(Long procureId) {
-		this.procureId = procureId;
-	}
-
-	public Long getFinaceId() {
-		return finaceId;
-	}
-
-	public void setFinaceId(Long finaceId) {
-		this.finaceId = finaceId;
-	}
+	@Column(name = "finance_id")
+	private String financeId;
+	@Column(name = "procure_IT")
+	private String procureIT;
+	
+	@Transient
+	private Long projectMasterId;
 
 	public String getSowName() {
 		return sowName;
@@ -75,10 +47,53 @@ public class SowMaster implements Serializable {
 		this.sowName = sowName;
 	}
 
-	@Override
-	public String toString() {
-		return "SowMaster [id=" + id + ", sowId=" + sowId + ", procureId=" + procureId + ", finaceId=" + finaceId
-				+ ", sowName=" + sowName + "]";
+	public Long getSowNo() {
+		return sowNo;
 	}
 
+	public void setSowNo(Long sowNo) {
+		this.sowNo = sowNo;
+	}
+
+	public String getFinanceId() {
+		return financeId;
+	}
+
+	public void setFinanceId(String financeId) {
+		this.financeId = financeId;
+	}
+
+	public String getProcureIT() {
+		return procureIT;
+	}
+
+	public void setProcureIT(String procureIT) {
+		this.procureIT = procureIT;
+	}
+
+	public Long getSowMasterId() {
+		return sowMasterId;
+	}
+
+	public void setSowMasterId(Long sowMasterId) {
+		this.sowMasterId = sowMasterId;
+	}
+
+	public Long getProjectMasterId() {
+		return projectMasterId;
+	}
+
+	public void setProjectMasterId(Long projectMasterId) {
+		this.projectMasterId = projectMasterId;
+	}
+
+	@Override
+	public String toString() {
+		return "SowMaster [sowMasterId=" + sowMasterId + ", sowNo=" + sowNo + ", sowName=" + sowName + ", financeId="
+				+ financeId + ", procureIT=" + procureIT + "]";
+	}
+
+	
+
+	
 }

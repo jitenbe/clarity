@@ -15,6 +15,11 @@ import { InvestmentComponent } from './components/investment/investment.componen
 import { ApiUrlResolverService } from './services/api.url.resolver.service';
 
 import { PasswordComponent } from './components/password/password.component';
+import { ProjectMasterComponent } from './components/project-master/project-master.component';
+import { SowMasterComponent } from './components/sow-master/sow-master.component';
+import { ConsutantMasterComponent } from './components/consutant-master/consutant-master.component';
+
+import { TimesheetComponent } from './components/timesheet/timesheet.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,11 @@ import { PasswordComponent } from './components/password/password.component';
     ClarityComponent,
     ValidateComponent,
     InvestmentComponent,
-    PasswordComponent    
+    PasswordComponent,
+    ProjectMasterComponent,
+    SowMasterComponent,
+    ConsutantMasterComponent,
+    TimesheetComponent    
   ],
   imports: [
     BrowserModule,
