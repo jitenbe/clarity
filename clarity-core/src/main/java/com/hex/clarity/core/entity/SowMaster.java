@@ -1,11 +1,14 @@
 package com.hex.clarity.core.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,10 +38,14 @@ public class SowMaster implements Serializable {
 	private String financeId;
 	@Column(name = "procure_IT")
 	private String procureIT;
-	
+
 	@Transient
 	private Long projectMasterId;
 
+	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name="sow_master_id")
+	private List<InvestmentMaster> investments=new ArrayList<>();
+	
 	public String getSowName() {
 		return sowName;
 	}
@@ -87,13 +94,18 @@ public class SowMaster implements Serializable {
 		this.projectMasterId = projectMasterId;
 	}
 
+	public List<InvestmentMaster> getInvestments() {
+		return investments;
+	}
+
+	public void setInvestments(List<InvestmentMaster> investments) {
+		this.investments = investments;
+	}
+
 	@Override
 	public String toString() {
 		return "SowMaster [sowMasterId=" + sowMasterId + ", sowNo=" + sowNo + ", sowName=" + sowName + ", financeId="
 				+ financeId + ", procureIT=" + procureIT + "]";
 	}
 
-	
-
-	
 }

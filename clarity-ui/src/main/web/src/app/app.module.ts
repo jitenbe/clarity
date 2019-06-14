@@ -20,6 +20,7 @@ import { SowMasterComponent } from './components/sow-master/sow-master.component
 import { ConsutantMasterComponent } from './components/consutant-master/consutant-master.component';
 
 import { TimesheetComponent } from './components/timesheet/timesheet.component';
+import { TableCrudDemoComponent } from './components/table-crud-demo/table-crud-demo.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TimesheetComponent } from './components/timesheet/timesheet.component';
     ProjectMasterComponent,
     SowMasterComponent,
     ConsutantMasterComponent,
-    TimesheetComponent    
+    TimesheetComponent,
+    TableCrudDemoComponent    
   ],
   imports: [
     BrowserModule,

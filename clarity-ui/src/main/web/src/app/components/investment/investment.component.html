@@ -7,17 +7,13 @@
             <th>Investment Code</th>
             <th>Investment Name</th>
             <th>Investment Type</th>
-            <th>Task</th>
-            <th>Is Deliverables</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let investment of investmentList">
-            <td>{{investment.investment_code}}</td>
-            <td>{{investment.investment_name}}</td>
-            <td>{{investment.investment_type}}</td>
-            <td>{{investment.client_requirement_name}}</td>
-            <td>{{investment.is_deliverbales_in_current_week}}</td>
+            <td>{{investment.investmentCode}}</td>
+            <td>{{investment.investmentName}}</td>
+            <td>{{investment.investmentType}}</td>
             <td>
                 <button class="btn btn-success" (click)="deleteInvestment(investment)"> Delete</button>
                 <button class="btn btn-success" (click)="editInvestment(investment)" style="margin-left: 20px;"> Edit</button>
@@ -28,7 +24,7 @@
 <ng-container *ngIf="show">
     <div class="card">
         <div class="card-header">
-            Investment Details
+            Investment
         </div>
         <div class="card-body">
             <div class="container">
@@ -44,60 +40,60 @@
                                 </div>
                             </div>
                             <input type="hidden" [(ngModel)]="investment.id" #investment_code="ngModel" name="id" />
-                            <fieldset class="col-md-10">
-                                <legend>Investment</legend>
+                            <div class="form-group col-md-6 col-sm-8">
+                                <label for="investmentCode">Investment Code</label>
+                                <input type="text" class="form-control" name="investmentCode" [(ngModel)]="investment.investmentCode" #investmentCode="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && investmentCode.invalid }" required />
+                                <div *ngIf="f.submitted && investmentCode.invalid" class="invalid-feedback">
+                                    <div *ngIf="investmentCode.errors.required">Investment Code is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <label for="investmentName">Investment Name</label>
+                                <textarea type="text" rows="2" cols="2" class="form-control" name="investmentName" [(ngModel)]="investment.investmentName" #investmentName="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && investmentName.invalid }" required></textarea>
+                                <div *ngIf="f.submitted && investmentName.invalid" class="invalid-feedback">
+                                    <div *ngIf="investmentName.errors.required">Investment Name is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <label for="investmentType">Investment Type</label>
+                                <select class="form-control" name="investmentType" [(ngModel)]="investment.investmentType" #investmentType="ngModel" [ngClass]="{ 'is-invalid': f.submitted && investmentType.invalid }"
+                                    required>
+                                    <option *ngIf=!investment.investmentType value="">Select</option>
+                                    <option *ngFor="let investmentType of investmentTypeList" [ngValue]="investmentType">{{investmentType}}</option>
+                                </select>
+                                <div *ngIf="f.submitted && investmentType.invalid" class="invalid-feedback">
+                                    <div *ngIf="investmentType.errors.required">Investment Type is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 col-sm-8">
+                                <label for="projectMasterId">Project Name</label>
+                                <select (change)="onChange($event)"id="projectMasterId" class="form-control" name="projectMasterId" [(ngModel)]="investment.projectMasterId" #projectMasterId="ngModel"
+                                  [ngClass]="{ 'is-invalid': f.submitted && projectMasterId.invalid }" required 
+                                  >
+                                  <option *ngIf=!investment.projectMasterId value=0>Select</option>
+                                  <option *ngFor="let project of projectList" [ngValue]="project.projectMasterId">{{project.projectName}}</option>
+                                </select>
+                                <div *ngIf="f.submitted && projectMasterId.invalid" class="invalid-feedback">
+                                  <div *ngIf="projectMasterId.errors.required">Project Name is required</div>
+                                </div>
+                              </div>
+                              <div id="hidden_div" [hidden]="edited">
                                 <div class="form-group col-md-6 col-sm-8">
-                                    <label for="investment_code">Investment Code</label>
-                                    <input type="text" class="form-control" name="investment_code" [(ngModel)]="investment.investment_code" #investment_code="ngModel"
-                                        [ngClass]="{ 'is-invalid': f.submitted && investment_code.invalid }" required />
-                                    <div *ngIf="f.submitted && investment_code.invalid" class="invalid-feedback">
-                                        <div *ngIf="investment_code.errors.required">Investment Code is required</div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6 col-sm-6">
-                                    <label for="investment_name">Investment Name</label>
-                                    <input type="text" class="form-control" name="investment_name" [(ngModel)]="investment.investment_name" #investment_name="ngModel"
-                                        [ngClass]="{ 'is-invalid': f.submitted && investment_name.invalid }" required />
-                                    <div *ngIf="f.submitted && investment_name.invalid" class="invalid-feedback">
-                                        <div *ngIf="investment_name.errors.required">Investment Name is required</div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6 col-sm-6">
-                                    <label for="investment_type">Investment Type</label>
-                                    <select class="form-control" name="investment_type" [(ngModel)]="investment.investment_type" #investment_type="ngModel" [ngClass]="{ 'is-invalid': f.submitted && investment_type.invalid }"
-                                        required>
-                                        <option *ngIf=!investment.investment_type value="">Select</option>
-                                        <option *ngFor="let investment_type of investmentTypeList" [ngValue]="investment_type">{{investment_type}}</option>
+                                    <label for="sowMasterId">SOW</label>
+                                    <select id="sowMasterId" class="form-control" name="sowMasterId" [(ngModel)]="investment.sowMasterId" 
+                                    #sowMasterId="ngModel"
+                                      [ngClass]="{ 'is-invalid': f.submitted && sowMasterId.invalid }" required 
+                                      >
+                                      <option *ngIf=!investment.sowMasterId value=0>Select</option>
+                                      <option *ngFor="let sow of sowList" [ngValue]="sow.sowMasterId">{{sow.sowName}}</option>
                                     </select>
-                                    <div *ngIf="f.submitted && investment_type.invalid" class="invalid-feedback">
-                                        <div *ngIf="investment_type.errors.required">Investment Type is required</div>
+                                    <div *ngIf="f.submitted && sowMasterId.invalid" class="invalid-feedback">
+                                      <div *ngIf="sowMasterId.errors.required">SOW is required</div>
                                     </div>
-
-                                </div>
-
-                                <div class="form-group col-md-4 col-sm-6">
-                                    <label for="client_requirement_name">Task Name</label>
-                                    <textarea rows="5" cols="33" class="form-control" name="client_requirement_name" [(ngModel)]="investment.client_requirement_name"
-                                        #client_requirement_name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && client_requirement_name.invalid }"
-                                        required></textarea>
-                                    <div *ngIf="f.submitted && client_requirement_name.invalid" class="invalid-feedback">
-                                        <div *ngIf="client_requirement_name.errors.required">Client Requirement Name is required</div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4 col-sm-6">
-                                    <label for="is_deliverbales_in_current_week">Is Deliverbales In Current Week</label>
-                                    <select id="is_deliverbales_in_current_weekId" class="form-control" name="sow_deliverables" [(ngModel)]="investment.is_deliverbales_in_current_week"
-                                        #is_deliverbales_in_current_week="ngModel" [ngClass]="{ 'is-invalid': f.submitted && is_deliverbales_in_current_week.invalid }"
-                                        required>
-                                        <option value="">Select</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                    <div *ngIf="f.submitted && is_deliverbales_in_current_week.invalid" class="invalid-feedback">
-                                        <div *ngIf="is_deliverbales_in_current_week.errors.required">Is Deliverbales In Current Week is required</div>
-                                    </div>
-                                </div>
-                            </fieldset>
+                                  </div>
+                              </div>
                             <div class="form-group col-md-4 col-sm-6">
                                 <button class="btn btn-primary" style='margin-right:16px'>{{savebtn}}</button>
                                 <input type="button" value="Reset" class="btn btn-secondary" style='margin-right:16px' (click)="reset()" />

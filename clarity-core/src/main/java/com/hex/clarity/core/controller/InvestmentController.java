@@ -1,7 +1,6 @@
 package com.hex.clarity.core.controller;
 
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.hex.clarity.core.beans.InvestmentCreationRequest;
 import com.hex.clarity.core.constants.ClarityConstants;
-import com.hex.clarity.core.entity.Consultant;
-import com.hex.clarity.core.entity.Investment;
 import com.hex.clarity.core.entity.InvestmentMaster;
-import com.hex.clarity.core.entity.ListOfValues;
 import com.hex.clarity.core.enums.ErrorMessage;
 import com.hex.clarity.core.exception.ClarityException;
 import com.hex.clarity.core.service.InvestmentService;
@@ -34,29 +28,6 @@ public class InvestmentController {
 	@Autowired
 	private InvestmentService investmentService;
 	
-	/*@SuppressWarnings("unchecked")
-	@PostMapping(value = "/investment/create")
-	public <T> ResponseEntity<?> addInvestment(@RequestBody InvestmentCreationRequest investments)
-	{
-		String response=null;
-		
-		  if(investments !=null)
-		  { 
-			  Investment investment=investmentService.getInvestmentModel(investments);
-			  if(investment !=null)
-			  {
-			  response=investmentService.addInvestment(investment);
-			  }
-		  }
-		  if(response==null)
-		  {
-			  return new ResponseEntity<>((T)response,HttpStatus.INTERNAL_SERVER_ERROR);
-		  }
-		 
-		
-		return new ResponseEntity<>(ClarityConstants.SUCCESS,HttpStatus.OK);
-		
-	}*/
 	@SuppressWarnings("unchecked")
 	@PostMapping(value = "/investment/add")
 	public <T> ResponseEntity<?> addInvestment(@RequestBody InvestmentMaster investment)
@@ -65,7 +36,6 @@ public class InvestmentController {
 		
 		  if(investment !=null)
 		  { 
-			  //InvestmentMaster investment_master=investmentService.getInvestmentModel(investments);
 			  if(investment !=null)
 			  {
 			  response=investmentService.addInvestmentDetails(investment);
@@ -78,7 +48,6 @@ public class InvestmentController {
 		return new ResponseEntity<>(ClarityConstants.SUCCESS,HttpStatus.OK);
 		
 	}
-	
 	@GetMapping(value = "/investmenttype/list")
 	public @ResponseBody ResponseEntity<List<String>> getInvestmentTypeList()
 	{

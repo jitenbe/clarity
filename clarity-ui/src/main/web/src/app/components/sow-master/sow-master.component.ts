@@ -24,7 +24,7 @@ onSubmit(sow:SowMaster)
 {
   console.log('sow->'+this.sow.projectMasterId+'sow_no'+this.sow.sowNo+'ddd'+this.sow);
   let vm=this;
-  vm.sowService.addSow(sow).subscribe(res=>this.showMsg=true);
+  vm.sowService.addSow(this.sow).subscribe(res=>this.showMsg=true);
 }
   getProjectList()
   {

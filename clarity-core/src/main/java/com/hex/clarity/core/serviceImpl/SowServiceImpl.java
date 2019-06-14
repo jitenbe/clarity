@@ -11,7 +11,7 @@ import com.hex.clarity.core.entity.ProjectMaster;
 import com.hex.clarity.core.entity.SowMaster;
 import com.hex.clarity.core.repository.ProjectRepository;
 import com.hex.clarity.core.repository.SowReporsitory;
-import com.hex.clarity.core.repository.SowService;
+import com.hex.clarity.core.service.SowService;
 
 @Service("sowService")
 public class SowServiceImpl implements SowService {
@@ -52,6 +52,17 @@ public class SowServiceImpl implements SowService {
 
 		}
 		return response;
+	}
+
+	@Override
+	public List<SowMaster> getSowsByprojectId(Long projectId) {
+		List<SowMaster> sowList=null;
+		//sowList=sowReporsitory.findByProjectId(projectId);		
+		if(sowList.size()>0)
+		{
+			return sowList;
+		}
+		return sowList;
 	}
 
 }

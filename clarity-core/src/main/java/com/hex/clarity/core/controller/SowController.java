@@ -9,26 +9,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.hex.clarity.core.beans.InvestmentCreationRequest;
-import com.hex.clarity.core.beans.SowRequestBean;
 import com.hex.clarity.core.constants.ClarityConstants;
-import com.hex.clarity.core.entity.Consultant;
-import com.hex.clarity.core.entity.Investment;
-import com.hex.clarity.core.entity.InvestmentMaster;
-import com.hex.clarity.core.entity.ListOfValues;
-import com.hex.clarity.core.entity.ProjectMaster;
 import com.hex.clarity.core.entity.SowMaster;
-import com.hex.clarity.core.enums.ErrorMessage;
-import com.hex.clarity.core.exception.ClarityException;
-import com.hex.clarity.core.repository.SowService;
-import com.hex.clarity.core.service.InvestmentService;
-import com.hex.clarity.core.service.ProjectService;
+import com.hex.clarity.core.service.SowService;
 
 @RestController
 @CrossOrigin("*")
@@ -53,6 +42,18 @@ public class SowController {
 		}
 		return new ResponseEntity<>(ClarityConstants.SUCCESS, HttpStatus.OK);
 
+	}
+	
+	@GetMapping(value="/sow/list/{projectid}")
+	public @ResponseBody ResponseEntity<List<SowMaster>> getSowListByProjectId(@PathVariable("projectid") Long projectId )
+	{
+		List<SowMaster> sowMasterList=null;
+		if(projectId !=0)
+		{
+			sowMasterList=sowService.getSowsByprojectId(projectId);
+		}
+		return new ResponseEntity<List<SowMaster>>(sowMasterList,HttpStatus.OK);
+		
 	}
 
 	/*

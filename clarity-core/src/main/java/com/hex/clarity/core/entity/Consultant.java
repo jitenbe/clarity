@@ -12,9 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
+/*
 @Entity
-@Table(name="consultant")
+@Table(name="consultant")*/
 
 public class Consultant implements Serializable {
 	
@@ -32,20 +32,15 @@ public class Consultant implements Serializable {
 	private String location;
 	
 	//@OneToMany(mappedBy = "consultants")
-	@ManyToMany(fetch = FetchType.LAZY,
-    cascade = {
-        CascadeType.PERSIST,
-        CascadeType.MERGE
-    },
-    mappedBy = "consultants")
-	private Set<Investment> investments=new HashSet<>();
-	
-	public Set<Investment> getInvestments() {
-		return investments;
-	}
-	public void setInvestments(Set<Investment> investments) {
-		this.investments = investments;
-	}
+	/*
+	 * @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,
+	 * CascadeType.MERGE }, mappedBy = "consultants") private Set<Investment>
+	 * investments=new HashSet<>();
+	 * 
+	 * public Set<Investment> getInvestments() { return investments; } public void
+	 * setInvestments(Set<Investment> investments) { this.investments = investments;
+	 * }
+	 */
 	public Long getId() {
 		return id;
 	}
@@ -79,7 +74,7 @@ public class Consultant implements Serializable {
 	@Override
 	public String toString() {
 		return "Consultant [id=" + id + ", consultant_code=" + consultant_code + ", first_name=" + first_name
-				+ ", last_name=" + last_name + ", location=" + location + ", investments=" + investments + "]";
+				+ ", last_name=" + last_name + ", location=" + location + ", investments=" +  "]";
 	}
 	
 	

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Investment } from '../models/investment_master';
+import { InvestmentMaster } from '../models/investment_master';
 import { HttpClient } from '@angular/common/http';
 import { ApiUrlResolverService } from './api.url.resolver.service';
 import { HttpUrlConstants } from '../constants/http.url.constants';
@@ -14,7 +14,7 @@ export class InvestmentService {
 
   constructor(private http:HttpClient,private urlResolver:ApiUrlResolverService) { }
 
-  addInvestment(investment:Investment):Observable<Investment>
+  addInvestment(investment:InvestmentMaster):Observable<InvestmentMaster>
   {
     let url=this.urlResolver.getUrl(HttpUrlConstants.URL_RESOLVERS.CREATE_INVESTMENT);
 
@@ -28,6 +28,6 @@ export class InvestmentService {
   getInvestmentList():Observable<any>
   {
     let url=this.urlResolver.getUrl(HttpUrlConstants.URL_RESOLVERS.INVESTMENT_LIST);
-    return this.http.get<Investment[]>(url);
+    return this.http.get<InvestmentMaster[]>(url);
   }
 }

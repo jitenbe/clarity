@@ -21,6 +21,7 @@ export class ProjectMasterService {
   }
   getProjectList():Observable<any>
   {
+    console.log('Calling Project list');
     let vm=this;
     let url=this.apiServices.getUrl(HttpUrlConstants.URL_RESOLVERS.PROJECT_LIST);
     return vm.http.get<ProjectMaster[]>(url);

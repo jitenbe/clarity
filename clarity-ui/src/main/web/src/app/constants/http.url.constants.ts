@@ -9,5 +9,6 @@ export class HttpUrlConstants
         CREATE_PROJECT:'project/add',
         CREATE_SOW:'sow/add',
         PROJECT_LIST:'/project/list',
+        SOW_LIST_BY_PROJECT:'sow/list/'
     };
 }

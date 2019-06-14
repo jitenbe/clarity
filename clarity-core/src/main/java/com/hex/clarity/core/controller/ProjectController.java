@@ -15,16 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hex.clarity.core.beans.InvestmentCreationRequest;
 import com.hex.clarity.core.constants.ClarityConstants;
-import com.hex.clarity.core.entity.Consultant;
-import com.hex.clarity.core.entity.Investment;
-import com.hex.clarity.core.entity.InvestmentMaster;
-import com.hex.clarity.core.entity.ListOfValues;
 import com.hex.clarity.core.entity.ProjectMaster;
 import com.hex.clarity.core.enums.ErrorMessage;
 import com.hex.clarity.core.exception.ClarityException;
-import com.hex.clarity.core.service.InvestmentService;
 import com.hex.clarity.core.service.ProjectService;
 
 @RestController
@@ -54,7 +48,7 @@ public class ProjectController {
 
 	  @GetMapping(value = "/project/list") 
 	  public @ResponseBody
-	  ResponseEntity<List<ProjectMaster>> getInvestmentTypeList() { 
+	  ResponseEntity<List<ProjectMaster>> getProjectList() { 
 		  List<ProjectMaster> projectList=null;
 	  
 		  projectList=projectService.getProjectList();
